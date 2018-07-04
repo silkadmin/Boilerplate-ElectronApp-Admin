@@ -1,0 +1,61 @@
+{
+    "DEBUG": true,
+    "TITLE": "SILK Desktop",
+    "SETTINGS": {
+        "PROD": {
+            "URLS": {
+                "APIDATA": "http://52.54.19.254:1337/",
+                "APIREGISTER": "http://52.54.19.254:1337/register",
+                "APILOGIN": "http://52.54.19.254:1337/loginpg",
+                "APILOGOUT": "http://52.54.19.254:1337/logout"
+            },
+            "CONFIG": {
+                "NOTIFICATION_INTERVAL": 60000
+            }
+        },
+        "DEV": {
+            "URLS": {
+                "APIDATA": "http://52.54.19.254:1337/",
+                "APIREGISTER": "http://52.54.19.254:1337/register",
+                "APILOGIN": "http://52.54.19.254:1337/loginpg",
+                "APILOGOUT": "http://52.54.19.254:1337/logout"
+            },
+            "CONFIG": {
+                "NOTIFICATION_INTERVAL": 60000
+            }
+        }
+    },
+    "MENU_1": {
+        "Dashboard": {
+            "link": "#home",
+            "icon": "fa fa-home",
+            "title": "Dashboard"
+        },
+        "Profile": {
+            "link": "#profile",
+            "icon": "glyphicon glyphicon-user",
+            "hidden": true
+        },
+        "About": {
+            "link": "#about",
+            "icon": "fa fa-info-circle",
+            "hidden": true
+        },
+        "Logout": {
+            "link": "@logoutApp",
+            "icon": "glyphicon glyphicon-off",
+            "hidden": true
+        }
+    },
+    "MENU_2": false,
+    "MENU_TRAY": false,
+    "UICONFIG": {
+        "NOSIDEBAR": ["login", "register", "forgetpwd", "pwdreset"],
+        "NOFOOTER": ["login", "register", "forgetpwd", "pwdreset"]
+    },
+    "POLICIES": {
+        "DEFAULT_STATE": "open",
+        "SECURE_PAGES": ["home"],
+        "NOLOGIN_PAGES": ["login", "register", "forgetpwd", "pwdreset"]
+    }
+}

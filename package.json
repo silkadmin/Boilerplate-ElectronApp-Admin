@@ -1,0 +1,78 @@
+{
+  "name": "com.silk.desktop1",
+  "version": "1.0.0",
+  "description": "Basic Desktop App",
+  "homepage": "http://smartinfologiks.com/",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --enable-logging",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist:linux": "build --x64 --ia32 --linux deb",
+    "dist:win64": "build --x64  --win",
+    "dist:win32": "build --ia32  --win",
+    "dist:mac": "build --x64 --ia32 --mac",
+    "dist:all": "build -mwl --x64 --ia32",
+    "dist": "npm run dist:mac && npm run dist:linux && npm run dist:win"
+  },
+  "author": {
+    "name": "SmartinfoLogiks",
+    "email": "admin@smartinfologiks.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "electron-localshortcut": "^2.0.2",
+    "electron-save-file": "^1.0.2",
+    "jquery": "^2.2.4",
+    "jquery.easing": "^1.4.1",
+    "font-awesome": "^4.6.3",
+    "handlebars": "^4.0.8",
+    "md5": "^2.2.1",
+    "fs-extra": "^4.0.2",
+    "node-localstorage": "*",
+    "node-thumbnail": "^0.12.0",
+    "require-reload": "*",
+    "s3": "^4.4.0",
+    "socket.io": "^1.0.3",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "electron": "1.6.2",
+    "electron-builder": "^10.17.3",
+    "electron-packager": "^9.1.0"
+  },
+  "packageIgnore": [
+    "LICENSE.md",
+    "README.md",
+    ".DS_Store",
+    ".travis.yml",
+    "appveyor.yml",
+    "test",
+    "dist",
+    "build/Screenshot.png"
+  ],
+  "build": {
+    "appId": "com.silk.desktop1",
+    "productName": "SILK Desktop",
+    "artifactName": "com.silk.desktop-1.0",
+    "asar": true,
+    "compression": "normal",
+    "copyright": "Copyright @ 2017 SmartinfoLogiks",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": "nsis"
+    },
+    "linux": {
+      "category": "Graphics",
+      "icon": "build/icons"
+    },
+    "nsis": {
+      "oneClick": false
+    }
+  }
+}
