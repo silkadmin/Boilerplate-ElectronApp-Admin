@@ -43,7 +43,7 @@ function createWindow() {
         mainWindow.center()
     }
 
-    // mainWindow.setMenu(null);
+    mainWindow.setMenu(null);
     // mainWindow.openDevTools();
 
     // mainWindow.loadURL(`file://${__dirname}/index.html`)
@@ -53,7 +53,7 @@ function createWindow() {
         slashes: true
       }));
 
-    mainWindow.on("closed", () => {
+    mainWindow.on("closed", () => {12
       mainWindow = null
     });
 
@@ -122,7 +122,7 @@ app.on("window-all-closed", () => {
 })
 
 app.on("activate", () => {
-    if (win === null) {
+    if (mainWindow === null) {
         createWindow();
     }
 })

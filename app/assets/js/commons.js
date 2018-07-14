@@ -14,10 +14,10 @@ $(function() {
       return moment(dt).fromNow();
     }
   });
-  handleBars.registerHelper('textAvatar', function(name) {
-    if(name==null) name="#";
-    return getTextAvatar(name);
-  });
+  // handleBars.registerHelper('textAvatar', function(name) {
+  //   if(name==null) name="#";
+  //   return getTextAvatar(name);
+  // });
 });
 
 Array.prototype.unique = function() {

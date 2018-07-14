@@ -1,12 +1,10 @@
 const requireLive = require('require-reload')(require);
 const remote = require('electron').remote;
+const os = require('os');
 const fs = require('fs');
 const fsUtils = require('fs');
 const fsExtra = require('fs-extra');
 const fsPath = require('path');
-const os = require('os');
-const handleBars = require('handlebars');
-const hashMD5 = require('md5');
 
 const winston = require('winston');
 
@@ -14,13 +12,17 @@ const saveFile = require('electron').remote.require('electron-save-file');
 const dialogUtils = require('electron').remote.dialog 
 const electronShortcut = require('electron').remote.require('electron-localshortcut');
 
+//Loading other libs
+const handleBars = require('handlebars');
+const hashMD5 = require('md5');
+const moment = require("moment");
+const Vue = require("vue");
+
 //LIBS
-const appUI=require("./libraries/js/logiks-ux.js");
-const appAPI=require("./libraries/js/logiks-misc.js");
-const appUtils=require("./libraries/js/logiks-utils.js");
-const appSecure=require("./libraries/js/logiks-security.js");
-const appData=require("./libraries/js/logiks-data.js");
-// const appADS=require("./libraries/js/logiks-ads.js");
+const appUI=require("./app/assets/js/app-ux.js");
+const appAPI=require("./app/assets/js/app-validator.js");
+const appUtils=require("./app/assets/js/app-utils.js");
+const appData=require("./app/assets/js/app-data.js");
 
 var isWin = /^win/.test(process.platform);
 
@@ -32,7 +34,6 @@ var deviceID=null;
 var logger = null;
 
 $(function() {
-    return;
     try {
         netAdd=os.networkInterfaces();
         netKeys=Object.keys(netAdd);
@@ -44,7 +45,7 @@ $(function() {
     deviceID=hashMD5(macAddress);
 
     //Disable all Std <a> Links
-    $("body").delegate("a[href]","click",function() {
+    $("body").delegate("a[href]:not([data-toggle])","click",function() {
         href=$(this).attr('href');
         if(href=="#" || href=="##" || href.substr(0,2)=="##") return true;
         return false;
@@ -70,14 +71,14 @@ $(function() {
 
         checkAppPaths();
 
-        initLoggers();
+        // initLoggers();
 
         //Start Debugger
-        appDebugger();
+        // appDebugger();
 
         initUI(initEvents);
 
-        loadFirstPage();
+        loadAppShell();
 
         setTimeout(function() {
             appAPI.checkAlerts();
@@ -130,8 +131,8 @@ function registerShortcut(key, callBack) {//'Ctrl+A'
     // });
 }
 
-function loadFirstPage() {
-    appUI.navigatePage(APPCONFIG.HOME,$("#sidebarMenu a[href='"+APPCONFIG.HOME+"']"));
+function loadAppShell() {
+    $("body").load("./app/app.html");
 }
 
 /*Other Supporting Functions*/

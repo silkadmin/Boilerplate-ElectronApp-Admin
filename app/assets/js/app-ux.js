@@ -169,8 +169,6 @@ module.exports = {
 		});
 
 		appUI.initAjaxDataUI();
-
-		appADS.renderAd();
 	},
 	reloadPage: function() {
 		this.navigatePage(this.CURRENT_PAGE);
